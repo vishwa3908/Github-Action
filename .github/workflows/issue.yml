@@ -12,7 +12,7 @@ jobs:
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v4
         with:
-          issue-number: ${{ toJSON(github.events)}}
+          issue-number: ${{ toJSON(github.events.issue.number)}}
           body: |
             Thanks for raising the issue 
             Our team will look into it
