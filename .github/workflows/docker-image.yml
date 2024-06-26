@@ -8,7 +8,10 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest,windows-latest,macOS-latest]
 
     steps:
     - uses: actions/checkout@v4
@@ -21,4 +24,5 @@ jobs:
           docker build . --file Dockerfile --tag my-image-name:latest
           docker tag my-image-name:latest "${{ secrets.DOCKER_USERNAME }}"/github-action-test
           docker push "${{ secrets.DOCKER_USERNAME }}"/github-action-test:latest
+    -name : Create Docker
     
