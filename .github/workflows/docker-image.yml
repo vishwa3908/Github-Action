@@ -24,5 +24,4 @@ jobs:
           docker build . --file Dockerfile --tag my-image-name:latest
           docker tag my-image-name:latest "${{ secrets.DOCKER_USERNAME }}"/github-action-test
           docker push "${{ secrets.DOCKER_USERNAME }}"/github-action-test:latest
-    -name : Create Docker
     
