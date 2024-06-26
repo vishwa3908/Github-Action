@@ -7,13 +7,13 @@ jobs:
   comment-on-issue:
     runs-on: ubuntu-latest
     steps:
-      - name: "dump github context"
-        run: echo '${{ toJSON(github.event) }}' | jq
+      - name: Dump GitHub Context
+        run: echo '${{ toJson(github.event) }}' | jq .
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v4
         with:
-          issue-number: ${{github.event.issue.number}}
+          issue-number: ${{ github.event.issue.number }}
           body: |
-            Thanks for raising the issue 
-            Our team will look into it
+            Thanks for raising the issue.
+            Our team will look into it.
           reactions: '+1'
