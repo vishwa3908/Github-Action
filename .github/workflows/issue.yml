@@ -1,7 +1,7 @@
 name: Comment
 on:
-  issues:
-    types: [opened]
+  push:
+    branches: ['feature/dev']
 
 jobs:
   comment-on-issue:
@@ -9,11 +9,11 @@ jobs:
     steps:
       - name: Dump GitHub Context
         run: echo '${{ toJson(github.event) }}' | jq .
-      - name: Create comment
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            Thanks for raising the issue.
-            Our team will look into it.
-          reactions: '+1'
+#      - name: Create comment
+#        uses: peter-evans/create-or-update-comment@v4
+#        with:
+#          issue-number: ${{ github.event.issue.number }}
+#          body: |
+#            Thanks for raising the issue.
+#            Our team will look into it.
+#          reactions: '+1'
